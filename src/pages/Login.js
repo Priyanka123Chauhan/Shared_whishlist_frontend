@@ -53,7 +53,7 @@ const Login = () => {
           >
             Login
           </button>
-                           <h5>New user - <a href='login'>Signup now</a></h5>
+                           <h5>New user - <a href='signup'>Signup now</a></h5>
 
         </form>
         <div className="md:w-1/2 w-full mt-6 md:mt-0 flex justify-center">

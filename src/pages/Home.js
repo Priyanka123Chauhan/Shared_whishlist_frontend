@@ -10,8 +10,13 @@ const Home = () => {
   const navigate = useNavigate();
   const [inviteUsername, setInviteUsername] = useState("");
   
+<<<<<<< HEAD
   const userId = localStorage.getItem("userId") || 1;
   const userEmail = localStorage.getItem("email") || "";
+=======
+
+  const userId = localStorage.getItem("userId") || 1;
+>>>>>>> 9b3f2f1 (Initial commit)
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -23,7 +28,10 @@ const Home = () => {
       if (user) {
         setUser(user);
         localStorage.setItem("userId", user.id);
+<<<<<<< HEAD
         localStorage.setItem("email", user.email);
+=======
+>>>>>>> 9b3f2f1 (Initial commit)
         // Use username from user metadata or fallback to email
         const username = user.user_metadata?.username || user.email;
         localStorage.setItem("username", username);
@@ -50,6 +58,7 @@ const Home = () => {
   };
 
   const handleDelete = (id) => {
+<<<<<<< HEAD
     if (window.confirm("Are you sure you want to delete this wishlist?")) {
       api.delete(`wishlists/${id}/`).then(() => {
         setWishlists(prev => prev.filter(w => w.id !== id));
@@ -59,6 +68,14 @@ const Home = () => {
         alert("Failed to delete wishlist.");
       });
     }
+=======
+    api.delete(`wishlists/${id}/`).then(() => {
+      setWishlists(prev => prev.filter(w => w.id !== id));
+      alert(`Wishlist with id ${id} is deleted!!`);
+    }).catch(err => {
+      console.error("Failed to delete wishlist", err);
+    });
+>>>>>>> 9b3f2f1 (Initial commit)
   };
 
   return (
@@ -121,6 +138,7 @@ const Home = () => {
               </form>
             </div>
 
+<<<<<<< HEAD
             <div className="max-w-full mx-auto mt-10 bg-white p-6 rounded-lg shadow-lg animate-fadeInUp delay-150">
               <h3 className="text-2xl font-semibold mb-4 text-center">Wishlists</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -128,6 +146,15 @@ const Home = () => {
                   <div
                     key={w.id}
                     className="p-4 border border-gray-300 rounded-lg hover:shadow-lg transition-shadow duration-300 flex flex-col items-center cursor-pointer"
+=======
+            <div className="max-w-xl mx-auto mt-10 bg-white p-6 rounded-lg shadow-lg animate-fadeInUp delay-150">
+              <h3 className="text-2xl font-semibold mb-4 text-center">Wishlists</h3>
+              <div className="flex flex-col md:flex-row md:flex-wrap md:justify-center gap-6">
+                {wishlists.map(w => (
+                  <div
+                    key={w.id}
+                    className="w-full md:w-1/4 p-4 border border-gray-300 rounded-lg hover:shadow-lg transition-shadow duration-300 flex flex-col items-center cursor-pointer"
+>>>>>>> 9b3f2f1 (Initial commit)
                   >
                     <Link
                       to={`/wishlist/${w.id}`}
@@ -156,7 +183,11 @@ const Home = () => {
             </div>
           </>
         ) : (
+<<<<<<< HEAD
           <h2 className="text-xl text-gray-700 text-center mt-20">Please wait</h2>
+=======
+          <h2 className="text-xl text-gray-700 text-center mt-20">Please log in</h2>
+>>>>>>> 9b3f2f1 (Initial commit)
         )}
       </div>
     </div>

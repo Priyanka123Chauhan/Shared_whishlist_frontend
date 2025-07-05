@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
+=======
+import React, { useState } from 'react';
+>>>>>>> 9b3f2f1 (Initial commit)
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 
@@ -8,6 +12,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+<<<<<<< HEAD
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
@@ -16,6 +21,8 @@ const Login = () => {
     });
   }, [navigate]);
 
+=======
+>>>>>>> 9b3f2f1 (Initial commit)
   const handleLogin = async (e) => {
     e.preventDefault();
     const { data, error } = await supabase.auth.signInWithPassword({
@@ -61,7 +68,11 @@ const Login = () => {
           >
             Login
           </button>
+<<<<<<< HEAD
                            <h5>New user - <a href='signup'>Signup now</a></h5>
+=======
+                           <h5>New user - <a href='login'>Signup now</a></h5>
+>>>>>>> 9b3f2f1 (Initial commit)
 
         </form>
         <div className="md:w-1/2 w-full mt-6 md:mt-0 flex justify-center">

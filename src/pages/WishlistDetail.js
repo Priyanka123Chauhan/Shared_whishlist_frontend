@@ -72,7 +72,6 @@ const WishlistDetail = () => {
     }
   };
 
-<<<<<<< HEAD
   const handleInvite = async e => {
     e.preventDefault();
     if (!inviteUsername) {
@@ -95,18 +94,6 @@ const WishlistDetail = () => {
       console.error("Invite error:", err);
       setInviteMessage(err.response?.data?.error || "Invite failed");
     }
-=======
-  const handleInvite = e => {
-    e.preventDefault();
-    api.post(`${id}/invite/`, { username: inviteUsername })
-      .then(res => {
-        setInviteMessage(res.data.message);
-        setInviteUsername("");
-      })
-      .catch(err => {
-        setInviteMessage(err.response?.data?.error || "Invite failed");
-      });
->>>>>>> 9b3f2f1 (Initial commit)
   };
 
   const handleEditClick = (product) => {
@@ -189,11 +176,7 @@ const WishlistDetail = () => {
         <input
           value={inviteUsername}
           onChange={e => setInviteUsername(e.target.value)}
-<<<<<<< HEAD
           placeholder="Email or username to invite"
-=======
-          placeholder="Username to invite"
->>>>>>> 9b3f2f1 (Initial commit)
           required
           className="flex-grow border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
         />

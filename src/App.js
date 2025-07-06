@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-=======
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
->>>>>>> 9b3f2f1 (Initial commit)
 import Home from './pages/Home';
 import WishlistDetail from './pages/WishlistDetail';
 import Login from './pages/Login';
@@ -12,10 +7,7 @@ import Signup from './pages/Signup';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-<<<<<<< HEAD
 import { supabase } from './supabaseClient';
-=======
->>>>>>> 9b3f2f1 (Initial commit)
 
 function App() {
   const [session, setSession] = useState(null);
@@ -36,7 +28,6 @@ function App() {
 
   return (
     <Router>
-<<<<<<< HEAD
       <Header session={session} />
       <Routes>
         <Route
@@ -55,14 +46,6 @@ function App() {
           path="/signup"
           element={!session ? <Signup /> : <Navigate to="/" replace />}
         />
-=======
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/wishlist/:id" element={<WishlistDetail />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
->>>>>>> 9b3f2f1 (Initial commit)
       </Routes>
       <Footer />
     </Router>

@@ -98,9 +98,12 @@ const Home = () => {
       <div className="relative z-10">
         {user ? (
           <>
-            <h2 className="text-3xl font-extrabold mb-6 text-center text-gray-800 animate-fadeInDown">
-              Welcome, {localStorage.getItem("username") ?? user.user_metadata?.username ?? user.email}
-            </h2>
+           <h2 className="text-3xl font-extrabold mb-6 text-center text-gray-800 animate-fadeInDown">
+  Welcome, {
+    String(localStorage.getItem("username") || user?.user_metadata?.username || user?.email || "Guest")
+  }
+</h2>
+
 
             <div className="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-lg animate-fadeInUp">
               <h3 className="text-2xl font-semibold mb-4 text-center">Create New Wishlist</h3>

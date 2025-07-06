@@ -72,16 +72,28 @@ const WishlistDetail = () => {
     }
   };
 
-  const handleInvite = e => {
+  const handleInvite = async e => {
     e.preventDefault();
-    api.post(`${id}/invite/`, { username: inviteUsername })
-      .then(res => {
-        setInviteMessage(res.data.message);
-        setInviteUsername("");
-      })
-      .catch(err => {
-        setInviteMessage(err.response?.data?.error || "Invite failed");
-      });
+    if (!inviteUsername) {
+      setInviteMessage("Please enter an email or username to invite.");
+      return;
+    }
+    try {
+      const isEmail = inviteUsername.includes('@');
+      const syncPayload = isEmail ? { email: inviteUsername } : { username: inviteUsername };
+      const syncRes = await api.post("users/sync/", syncPayload);
+      const userId = syncRes.data.id;
+      if (!userId) {
+        setInviteMessage("User not found.");
+        return;
+      }
+      const inviteRes = await api.post(`${id}/invite/`, { user_id: userId });
+      setInviteMessage(inviteRes.data.message);
+      setInviteUsername("");
+    } catch (err) {
+      console.error("Invite error:", err);
+      setInviteMessage(err.response?.data?.error || "Invite failed");
+    }
   };
 
   const handleEditClick = (product) => {
@@ -164,7 +176,7 @@ const WishlistDetail = () => {
         <input
           value={inviteUsername}
           onChange={e => setInviteUsername(e.target.value)}
-          placeholder="Username to invite"
+          placeholder="Email or username to invite"
           required
           className="flex-grow border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
         />
